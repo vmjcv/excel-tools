@@ -1,0 +1,5 @@
+*.xls
+*.xlsx
+*.exe
+data
+**/.DS_Store
