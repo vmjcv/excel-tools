@@ -1,2 +1,2 @@
-call python excel2json.py
+call python main.py
 pause

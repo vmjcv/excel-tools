@@ -1,15 +1,16 @@
 {
-    "input": [
-        "配表.xlsx"
-    ],
-    "output": "data",
-    "exporter": {
-        "json": {
-            "indent": 2
-        },
-        "typescript": {
-            "type_extention": "Data",
-            "type_prefix": ""
-        }
-    }  
+	"input": [
+		{ "file": "配表.xlsx", "encode": "GBK"}
+	],
+	"output": "data",
+	"exporter": {
+		"json": {
+			"indent": 2
+		},
+		"typescript": {
+			"type_extention": "Data",
+			"type_prefix": "",
+			"file_name": "data"
+		}
+	}
 }
