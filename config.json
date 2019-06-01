@@ -5,12 +5,22 @@
 	"output": "data",
 	"exporter": {
 		"json": {
+			"enabled": false,
 			"indent": 2
 		},
 		"typescript": {
+			"enabled": false,
 			"type_extention": "Data",
 			"type_prefix": "",
 			"file_name": "data"
+		},
+		"gdscript": {
+			"enabled": true,
+			"type_extention": "Data",
+			"type_prefix": "",
+			"index_file": "configs",
+			"tool": true,
+			"autoload": true
 		}
 	}
 }
