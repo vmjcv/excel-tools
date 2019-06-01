@@ -5,7 +5,8 @@ class TypeScriptExporter(Exporter):
 	def __init__(self, config):
 		super(TypeScriptExporter, self).__init__(config)
 		self.name = "typescript"
-		self.declear_content = ""
+		self.declear_content = self.line("// Tool generated file DO NOT MODIFY")
+		self.declear_content += self.line()
 		
 	def detect_type(self, value):
 		if isinstance(value, str):
@@ -15,10 +16,10 @@ class TypeScriptExporter(Exporter):
 		elif isinstance(value, bool):
 			return "boolean"
 		elif isinstance(value, dict):
-			ret = "{\n"
+			ret = self.line("{")
 			for key in value:
-				ret += "\t{}: {};\n".format(key, self.detect_type(value[key]))
-			ret += "}\n"
+				ret += self.line("{}: {};".format(key, self.detect_type(value[key])), 1)
+			ret += self.line("}")
 			return ret
 		elif isinstance(value, list):
 				if len(value) > 0:
@@ -45,7 +46,8 @@ class TypeScriptExporter(Exporter):
 				body = self.detect_type(data[0])
 				class_name = self.config['exporter']['typescript']['type_prefix'] + name + self.config['exporter']['typescript']['type_extention']
 				text = 'interface {} {}'.format(class_name, body)
-				self.declear_content += text + '\n\n'
+				self.declear_content += text
+				self.declear_content += self.line()
 
 	def dump(self):
 		out_path = os.path.join(self.config['output'], self.name, self.config['exporter']['typescript']['file_name'] + ".d.ts")
