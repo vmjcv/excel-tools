@@ -36,6 +36,8 @@ class GDScriptExporter(Exporter):
 			return '"' + value.replace('"', '\\"') + '"'
 		elif isinstance(value, dict) or isinstance(value, list):
 			return json.dumps(value, ensure_ascii=False, sort_keys=True)
+		elif value is None:
+			return "null"
 		return str(value)
 		
 	def get_class_name(self, table_name):
