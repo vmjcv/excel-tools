@@ -108,7 +108,7 @@ class GDScriptExporter(Exporter):
 		
 		depot = self.line("var unique_id_depot = {}")
 		functions = self.line("func get_config_by_uid(id: int):")
-		functions += self.line("return unique_id_depot[id]", 1)
+		functions += self.line("return unique_id_depot[id] if id in unique_id_depot else null", 1)
 		functions += self.line()
 		functions += self.line("func get_table_configs(table: GDScript):")
 		functions += self.line("return configs[table] if table in configs else null", 1)
