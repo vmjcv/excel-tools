@@ -23,7 +23,7 @@ class GDScriptExporter(Exporter):
 		elif isinstance(value, list):
 			return "Array"
 		else:
-			return "Variant"
+			return None
 			
 	def is_tool(self):
 		return self.config["exporter"]["gdscript"]["tool"]
@@ -64,7 +64,9 @@ class GDScriptExporter(Exporter):
 		initializers = ""
 		for key in props:
 			# declear
-			declear = self.line("var {}: {}".format(key, self.detect_type(first_line[key])), 1)
+			gd_type = self.detect_type(first_line[key])
+			gd_type = ": " + gd_type if gd_type else ""
+			declear = self.line("var {}{}".format(key, gd_type), 1)
 			script_text += declear
 			# parms
 			param = "p_" + key
