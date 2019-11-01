@@ -3,6 +3,7 @@
 
 import os, json, xlrd
 
+SKIP_TAG = '@skip'
 	
 # 读取原始数据
 def load_tabels(file, encode):
@@ -11,18 +12,36 @@ def load_tabels(file, encode):
 		xlrd.Book.encoding = encode
 		data = xlrd.open_workbook(file)
 		for sheet_name in data.sheet_names():
+			# 忽略 @skip 表
+			if str(sheet_name).strip().startswith(SKIP_TAG): continue
 			table_data = []
+			
 			sheet = data.sheet_by_name(sheet_name)
-			title_row = sheet.row_values(0)
-			if sheet.nrows < 2 or not title_row:
-				continue # 忽略空表
-			for i in range(1, sheet.nrows):
-				table_data.append(process_row(title_row, sheet.row_values(i)))
+			title_row = None
+			for i in range(0, sheet.nrows):
+				row = sheet.row_values(i)
+				if not is_valid_row(row): continue
+				if not title_row:
+					title_row = row
+					continue
+				row_data = process_row(title_row, row)
+				if row_data: table_data.append(row_data)
+			# 忽略空表
+			if len(table_data) == 0: continue
 			tables[sheet_name] = table_data
 		return tables
 	else:
 		raise Exception("文件不存在: " + file)
-		
+
+def is_valid_row(row):
+	if str(row[0]).strip() == SKIP_TAG: return False
+	all_empty = True
+	for v in row:
+		all_empty = all_empty and isinstance(v, str) and len(v.strip()) == 0
+		if not all_empty: break
+	if all_empty: return False
+	return True
+
 def process_row(title_row, row):
 	data = {}
 	for i in range(len(title_row)):
