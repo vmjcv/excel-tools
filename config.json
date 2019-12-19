@@ -5,17 +5,18 @@
 	"output": "data",
 	"exporter": {
 		"json": {
-			"enabled": false,
-			"indent": 2
+			"enabled": true,
+			"indent": 2,
+			"variant_array_length": true
 		},
 		"typescript": {
-			"enabled": false,
+			"enabled": true,
 			"type_extention": "Data",
 			"type_prefix": "",
 			"file_name": "data"
 		},
 		"gdscript": {
-			"enabled": true,
+			"enabled": false,
 			"type_extention": "Data",
 			"type_prefix": "",
 			"index_file": "configs",

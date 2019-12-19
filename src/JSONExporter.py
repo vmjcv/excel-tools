@@ -7,7 +7,17 @@ class JSONExporter(Exporter):
 		self.name = "json"
 	
 	def export_json(self, tabel):
-		return tabel
+		new_tabel = []
+		for row in tabel:
+			new_row = {}
+			for key in row:
+				value = json.loads(json.dumps(row[key], ensure_ascii=False))
+				if isinstance(value, list):
+					while len(value) > 0 and (value[len(value)-1] is None):
+						value.pop(len(value) - 1)
+				new_row[key] = value
+			new_tabel.append(new_row)
+		return new_tabel
 
 	def dump_json(self, name, data):
 		out_path = os.path.join(self.config['output'], self.name, name + '.json')
