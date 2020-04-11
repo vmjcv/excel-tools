@@ -6,6 +6,7 @@
 * JSON 文件
 * TypeScript 声明文件（需要配合 JSON 使用）
 * Godot 引擎的 GDScript 脚本文件
+* C# 类型声明
 
 
 ## 表格格式说明
@@ -57,8 +58,17 @@
 			"type_prefix": "",
 			"file_name": "data"
 		},
-		"gdscript": {
+		"csharp": {
 			"enabled": true,
+			"namespace": "data",
+			"base_type": "System.Object",
+			"type_extention": "",
+			"type_prefix": "",
+			"file_name": "data",
+			"ignore_id": false
+		},
+		"gdscript": {
+			"enabled": false,
 			"type_extention": "Data",
 			"type_prefix": "",
 			"index_file": "configs",

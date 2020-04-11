@@ -15,6 +15,15 @@
 			"type_prefix": "",
 			"file_name": "data"
 		},
+		"csharp": {
+			"enabled": true,
+			"namespace": "data",
+			"base_type": "System.Object",
+			"type_extention": "",
+			"type_prefix": "",
+			"file_name": "data",
+			"ignore_id": false
+		},
 		"gdscript": {
 			"enabled": false,
 			"type_extention": "Data",
