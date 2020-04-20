@@ -12,6 +12,7 @@ def load_tabels(file, encode):
 		xlrd.Book.encoding = encode
 		data = xlrd.open_workbook(file)
 		for sheet_name in data.sheet_names():
+			sheet_name = sheet_name.strip()
 			# 忽略 @skip 表
 			if str(sheet_name).strip().startswith(SKIP_TAG): continue
 			table_data = []
