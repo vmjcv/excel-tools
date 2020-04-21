@@ -27,18 +27,7 @@ class TypeScriptExporter(Exporter):
 				return "any[]"
 		else:
 			return "any"
-		
-	def dump_json(self, name, data):
-		out_path = os.path.join(self.config['output'], self.name, name + '.json')
-		if not os.path.isdir(os.path.dirname(out_path)): os.makedirs(os.path.dirname(out_path))
-		indent = self.config['exporter']['json']['indent']
-		json.dump(
-			data,
-			open(out_path, 'w', encoding="utf8"),
-			sort_keys=True, ensure_ascii=False,
-			indent=indent
-		)
-		
+
 	def parse_tables(self, tables):
 		for name in tables:
 			data = tables[name]

@@ -1,28 +1,40 @@
 {
 	"input": [
-		{ "file": "配表.xlsx", "encode": "GBK"}
+		{ "file": "士兵表.xlsx", "encode": "GBK"},
+		{ "file": "统帅表.xlsx", "encode": "GBK"},
+		{ "file": "武器表.xlsx", "encode": "GBK"},
+		{ "file": "装备表.xlsx", "encode": "GBK"},
+		{ "file": "关卡表.xlsx", "encode": "GBK"},
+		{ "file": "僵尸表.xlsx", "encode": "GBK"}
 	],
-	"output": "data",
+	"output": "../../client/Assets/Resources/data",
 	"exporter": {
 		"json": {
 			"enabled": true,
 			"indent": 2,
-			"variant_array_length": true
+			"variant_array_length": true,
+			"incompatible_as_default": true,
+			"default": {
+				"boolean": false,
+				"number": 0,
+				"string": "",
+				"any": null
+			}
 		},
 		"typescript": {
-			"enabled": true,
+			"enabled": false,
 			"type_extention": "Data",
 			"type_prefix": "",
 			"file_name": "data"
 		},
 		"csharp": {
 			"enabled": true,
-			"namespace": "data",
-			"base_type": "System.Object",
+			"namespace": "game.data",
+			"base_type": "tiny.data.UniqueIDObject",
 			"type_extention": "",
 			"type_prefix": "",
 			"file_name": "data",
-			"ignore_id": false
+			"ignore_id": true
 		},
 		"gdscript": {
 			"enabled": false,

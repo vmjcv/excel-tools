@@ -13,11 +13,11 @@ class CSharpExporter(Exporter):
 		if isinstance(value, str):
 			return "string"
 		elif isinstance(value, int):
-			return "Nullable<int>"
+			return "int"
 		elif isinstance(value, float):
-			return "Nullable<float>"
+			return "float"
 		elif isinstance(value, bool):
-			return "Nullable<bool>"
+			return "bool"
 		elif isinstance(value, dict):
 			ret = self.line("{")
 			for key in value:
@@ -31,17 +31,6 @@ class CSharpExporter(Exporter):
 				return "object[]"
 		else:
 			return "object"
-		
-	def dump_json(self, name, data):
-		out_path = os.path.join(self.config['output'], self.name, name + '.json')
-		if not os.path.isdir(os.path.dirname(out_path)): os.makedirs(os.path.dirname(out_path))
-		indent = self.config['exporter']['json']['indent']
-		json.dump(
-			data,
-			open(out_path, 'w', encoding="utf8"),
-			sort_keys=True, ensure_ascii=False,
-			indent=indent
-		)
 		
 	def parse_tables(self, tables):
 		self.declear_content += self.line("namespace " + self.config['exporter']['csharp']['namespace'] + " {")

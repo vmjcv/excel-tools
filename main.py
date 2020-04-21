@@ -2,6 +2,8 @@
 #coding=utf-8
 
 import os, json, xlrd
+import colorama
+colorama.init(autoreset=True)
 from src.JSONExporter import JSONExporter
 from src.TypeScriptExporter import TypeScriptExporter
 from src.GDScriptExporter import GDScriptExporter
@@ -25,7 +27,7 @@ def main():
 	for exporter in exporters:
 		print("Exporting for", exporter.name)
 		exporter.dump()
-	print("All Done!")
+	print(colorama.Fore.GREEN + "All Done!")
 
 if __name__ == '__main__':
 	main()
