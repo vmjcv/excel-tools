@@ -6,17 +6,18 @@ class CSharpExporter(Exporter):
 		super(CSharpExporter, self).__init__(config)
 		self.name = "csharp"
 		self.declear_content = self.line("// Tool generated file DO NOT MODIFY")
+		self.declear_content += self.line("using System;")
 		self.declear_content += self.line()
 
 	def detect_type(self, value):
 		if isinstance(value, str):
 			return "string"
 		elif isinstance(value, int):
-			return "int"
+			return "Nullable<int>"
 		elif isinstance(value, float):
-			return "float"
+			return "Nullable<float>"
 		elif isinstance(value, bool):
-			return "bool"
+			return "Nullable<bool>"
 		elif isinstance(value, dict):
 			ret = self.line("{")
 			for key in value:
