@@ -21,7 +21,7 @@ def main():
 	if not os.path.isdir(CONFIG['output']): os.makedirs(CONFIG['output'])
 	for input in CONFIG['input']:
 		print("Parsing file", input['file'], "with encoding", input['encode'])
-		tables = load_tabels(input['file'], input['encode'])
+		tables = load_tabels(input['file'], input['encode'], CONFIG['parser'])
 		for exporter in exporters:
 			exporter.parse_tables(tables)
 	for exporter in exporters:

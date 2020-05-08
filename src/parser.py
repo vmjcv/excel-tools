@@ -6,7 +6,7 @@ import os, json, xlrd
 SKIP_TAG = '@skip'
 	
 # 读取原始数据
-def load_tabels(file, encode):
+def load_tabels(file, encode, configs):
 	if os.path.isfile(file):
 		tables = {}
 		xlrd.Book.encoding = encode
@@ -25,7 +25,7 @@ def load_tabels(file, encode):
 				if not title_row:
 					title_row = row
 					continue
-				row_data = process_row(title_row, row)
+				row_data = process_row(title_row, row, configs)
 				if row_data: table_data.append(row_data)
 			# 忽略空表
 			if len(table_data) == 0: continue
@@ -43,7 +43,7 @@ def is_valid_row(row):
 	if all_empty: return False
 	return True
 
-def process_row(title_row, row):
+def process_row(title_row, row, configs):
 	data = {}
 	for i in range(len(title_row)):
 		key = title_row[i]
@@ -52,8 +52,9 @@ def process_row(title_row, row):
 		value = row[i]
 		if isinstance(value, str) and len(value.strip()) == 0:
 			value = None
-		elif isinstance(value, float) and value == int(value):
-			value = int(value)
+		elif isinstance(value, float):
+			if value == int(value) and not configs['floating_numbers']:
+				value = int(value)
 		if key in data:
 			if isinstance(data[key], list):
 				data[key].append(value)

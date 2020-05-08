@@ -5,9 +5,15 @@
 		{ "file": "武器表.xlsx", "encode": "GBK"},
 		{ "file": "装备表.xlsx", "encode": "GBK"},
 		{ "file": "关卡表.xlsx", "encode": "GBK"},
-		{ "file": "僵尸表.xlsx", "encode": "GBK"}
+		{ "file": "箱子奖励招募表.xlsx", "encode": "GBK"},
+		{ "file": "僵尸表.xlsx", "encode": "GBK"},
+		{ "file": "任务表.xlsx", "encode": "GBK"},
+		{ "file": "签到表.xlsx", "encode": "GBK"}
 	],
 	"output": "../../client/Assets/Resources/data",
+	"parser": {
+		"floating_numbers": false
+	},
 	"exporter": {
 		"json": {
 			"enabled": true,
