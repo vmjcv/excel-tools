@@ -44,7 +44,7 @@
 ```json
 {
 	"input": [
-		{ "file": "配表.xlsx", "encode": "GBK"}
+		{ "file": "配表.xls", "encode": "GBK"}
 	],
 	"output": "data",
 	"exporter": {

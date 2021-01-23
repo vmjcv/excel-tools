@@ -1,22 +1,16 @@
 {
 	"input": [
-		{ "file": "士兵表.xlsx", "encode": "GBK"},
-		{ "file": "统帅表.xlsx", "encode": "GBK"},
-		{ "file": "武器表.xlsx", "encode": "GBK"},
-		{ "file": "装备表.xlsx", "encode": "GBK"},
-		{ "file": "关卡表.xlsx", "encode": "GBK"},
-		{ "file": "箱子奖励招募表.xlsx", "encode": "GBK"},
-		{ "file": "僵尸表.xlsx", "encode": "GBK"},
-		{ "file": "任务表.xlsx", "encode": "GBK"},
-		{ "file": "签到表.xlsx", "encode": "GBK"}
+		{ "file": "../../game/data/excel/technology_info.xls", "encode": "GBK"},
+		{ "file": "../../game/data/excel/policy_info.xls", "encode": "GBK"}
 	],
-	"output": "../../client/Assets/Resources/data",
+	"input_dir": { "file": "../../game/data/excel", "encode": "GBK"},
 	"parser": {
 		"floating_numbers": false
 	},
+	"output": "../../game/data",
 	"exporter": {
 		"json": {
-			"enabled": true,
+			"enabled": false,
 			"indent": 2,
 			"variant_array_length": true,
 			"incompatible_as_default": true,
@@ -34,7 +28,7 @@
 			"file_name": "data"
 		},
 		"csharp": {
-			"enabled": true,
+			"enabled": false,
 			"namespace": "game.data",
 			"base_type": "tiny.data.UniqueIDObject",
 			"type_extention": "",
@@ -43,7 +37,7 @@
 			"ignore_id": true
 		},
 		"gdscript": {
-			"enabled": false,
+			"enabled": true,
 			"type_extention": "Data",
 			"type_prefix": "",
 			"index_file": "configs",
